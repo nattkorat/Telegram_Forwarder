@@ -12,9 +12,9 @@ from forwarder.utils import get_destination, get_config, predicate_text
 async def send_message(
     message: Message, chat_id: int, thread_id: Optional[int] = None
 ) -> Union[MessageId, Message]:
-    if REMOVE_TAG:
-        return await message.copy(chat_id, message_thread_id=thread_id)  # type: ignore
-    return await message.forward(chat_id, message_thread_id=thread_id)  # type: ignore
+    # if REMOVE_TAG != 1:
+    #     return await message.copy(chat_id, message_thread_id=thread_id)  # type: ignore
+    return await message.forward(chat_id)  # type: ignore
 
 
 async def forwarder(update: Update, _: ContextTypes.DEFAULT_TYPE) -> None:
